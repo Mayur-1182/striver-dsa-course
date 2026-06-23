@@ -85,8 +85,6 @@ int main()
 {
     vector<int> arr = {9, 7, 6, 5, 2, 3, 6, 4, 1, 5, 3, 0};
     cout << "longest sequence : " << longestSequenceSet(arr);
-    set<int> st;
-    st.insert(99);
 
     return 0;
 }
