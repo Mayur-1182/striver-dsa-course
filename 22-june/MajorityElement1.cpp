@@ -63,6 +63,80 @@ int buyAndSellStock(vector<int> &a)
     }
     return maxProfit;
 }
+
+vector<int> smallerNumbersThanCurrent(vector<int> &nums)
+{
+    vector<int> temp = nums;
+    vector<int> ans;
+    sort(nums.begin(), nums.end());
+    map<int, int> mpp;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (mpp.find(nums[i]) == mpp.end())
+        {
+            cout << " if state i : " << i << endl;
+            mpp[nums[i]] = i;
+        }
+    }
+    for (int i = 0; i < temp.size(); i++)
+    {
+        ans.push_back(mpp[temp[i]]);
+    }
+    return ans;
+}
+
+vector<int> findDisappearedNumbers(vector<int> &nums)
+{
+    int len = nums.size();
+    vector<int> ans;
+    set<int> st;
+    for (int i = 0; i < len; i++)
+    {
+        cout << "insert loop" << endl;
+        st.insert(nums[i]);
+    }
+    for (int i = 0; i < len; i++)
+    {
+        cout << "for loop second" << endl;
+        if (ans.size() == 2)
+        {
+            cout << "first if block" << endl;
+            break;
+        }
+
+        if (st.find(i + 1) == st.end())
+        {
+            cout << "sec if block" << endl;
+            ans.push_back(i + 1);
+        }
+    }
+    return ans;
+}
+
+bool isToeplitzMatrix(vector<vector<int>> &matrix)
+{
+    int row = matrix.size();
+    int col = matrix[0].size();
+    int diagonalEle = matrix[0][0];
+    int j = 0;
+    cout << "row : " << row << " col : " << col << " diagonalEle:" << diagonalEle << endl;
+    for (int i = 0; i < row; i++)
+    {
+        cout << "i : " << i << " j : " << j << " " << endl;
+        if (j >= col)
+        {
+            break;
+        }
+        if (matrix[i][j] != diagonalEle)
+        {
+            return false;
+        }
+
+        j++;
+    }
+    return true;
+}
+
 int main()
 {
     // vector<int> arr = {
@@ -74,8 +148,14 @@ int main()
     // }
 
     // cout << majorityElement(arr);
-    vector<int> arr = {7, 1, 5, 3, 6, 4};
-    cout << buyAndSellStock(arr);
+    // vector<int> arr = {4, 3, 2, 7, 8, 2, 3, 1};
+    // vector<int> ans = findDisappearedNumbers(arr);
+    // for (auto it : ans)
+    // {
+    //     cout << it << " ";
+    // }
+    vector<vector<int>> arr = {{18}, {22}};
+    cout << isToeplitzMatrix(arr);
 
     return 0;
 }

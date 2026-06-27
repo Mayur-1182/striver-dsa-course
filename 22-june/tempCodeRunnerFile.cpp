@@ -1,5 +1,5 @@
-
-    // for (int i = 0; i < nums.size(); i++)
-    // {
-    //     cout << nums[i] << " ";
-    // }
+ // if (ans.size() == 2)
+        // {
+        //     cout << "first if block" << endl;
+        //     break;
+        // }
